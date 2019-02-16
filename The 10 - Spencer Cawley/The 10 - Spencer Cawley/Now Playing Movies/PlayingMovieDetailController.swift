@@ -8,19 +8,18 @@
 
 import UIKit
 import AVKit
-import AVFoundation
 import WebKit
 
-class PlayingMovieDetailController: UIViewController {
+class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
     
     var movie: Movie?
     var movieController = MovieController()
-    //    var videoPlayer = VideoPlayer()
+    var movieURL: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        
+        updateImageView()
     }
     
     @IBOutlet weak var playingMovieDetailImage: UIImageView!
@@ -28,7 +27,11 @@ class PlayingMovieDetailController: UIViewController {
     @IBOutlet weak var playingMovieDetailOverview: UILabel!
     @IBOutlet weak var playingMovieID: UILabel!
     
-    
+    @IBAction func playTrailerButton(_ sender: UIButton) {
+        guard let movie = movie else { return }
+        let movieID = String(movie.id)
+        fetchVideo(for: movieID)
+    }
     
     
     func updateViews() {
@@ -46,6 +49,53 @@ class PlayingMovieDetailController: UIViewController {
                 self.playingMovieDetailImage.image = image
             }
         }
+    }
+    
+    func updateImageView() {
+        playingMovieDetailImage.layer.cornerRadius    = 20
+        
+        playingMovieDetailImage.layer.shadowColor     = UIColor.black.cgColor
+        playingMovieDetailImage.layer.shadowOffset    = CGSize(width: 0.0, height: 6.0)
+        playingMovieDetailImage.layer.shadowRadius    = 8
+        playingMovieDetailImage.layer.shadowOpacity   = 0.5
+        playingMovieDetailImage.clipsToBounds         = true
+        playingMovieDetailImage.layer.masksToBounds   = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "toTrailerVC", let destinationVC = segue.destination as? PlayingMovieTrailerController else { return }
+        destinationVC.url = sender as? URL
+    }
+}
+
+extension PlayingMovieDetailController {
+
+    func playMovie(with key: String) {
+        let url = URL(string: "https://www.youtube.com/embed/\(key)")!
+        performSegue(withIdentifier: "toTrailerVC", sender: url)
+        print(url)
+    }
+
+    func fetchVideo(for movieId: String) {
+
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieId)/videos?api_key=725427eb27bb2372e7c69e11e5256f55&language=en-US")!
+
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+
+
+            guard let data = data else {return}
+
+            let movie = try? JSONDecoder().decode(KeyModel.self, from: data)
+            DispatchQueue.main.async {
+                self.playMovie(with: movie!.results!.first!.key!)
+                print(movie!.results!.first!.key!)
+            }
+
+            }.resume()
     }
 }
 

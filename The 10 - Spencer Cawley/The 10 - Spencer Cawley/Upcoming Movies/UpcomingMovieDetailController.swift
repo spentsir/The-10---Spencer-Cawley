@@ -16,6 +16,7 @@ class UpcomingMovieDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        updateImageView()
     }
     
     @IBOutlet weak var upcomingMovieDetailImage: UIImageView!
@@ -36,5 +37,16 @@ class UpcomingMovieDetailController: UIViewController {
                 self.upcomingMovieDetailImage.image = image
             }
         }
+    }
+    
+    func updateImageView() {
+        upcomingMovieDetailImage.layer.cornerRadius    = 20
+        
+        upcomingMovieDetailImage.layer.shadowColor     = UIColor.black.cgColor
+        upcomingMovieDetailImage.layer.shadowOffset    = CGSize(width: 0.0, height: 6.0)
+        upcomingMovieDetailImage.layer.shadowRadius    = 8
+        upcomingMovieDetailImage.layer.shadowOpacity   = 0.5
+        upcomingMovieDetailImage.clipsToBounds         = true
+        upcomingMovieDetailImage.layer.masksToBounds   = false
     }
 }

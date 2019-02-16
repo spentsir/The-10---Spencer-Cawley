@@ -157,7 +157,10 @@
                                     <constraint firstAttribute="height" constant="40" id="zf1-6B-Ld5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                <state key="normal" title="See Trailer"/>
+                                <state key="normal" title="Watch Trailer"/>
+                                <connections>
+                                    <action selector="playTrailerButton:" destination="39G-yp-Jlx" eventType="touchUpInside" id="2AI-vq-Oix"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popcorn" translatesAutoresizingMaskIntoConstraints="NO" id="w64-E3-VoI">
                                 <rect key="frame" x="222" y="587" width="35" height="35"/>
@@ -209,11 +212,27 @@
                         <outlet property="playingMovieDetailOverview" destination="vgZ-iq-xM6" id="ndy-aZ-Q6f"/>
                         <outlet property="playingMovieDetailRating" destination="wh8-fm-NPe" id="FRl-WQ-B6X"/>
                         <outlet property="playingMovieID" destination="MYh-Fh-q9R" id="GCj-rc-4A7"/>
+                        <segue destination="wf3-A5-EXh" kind="show" identifier="toTrailerVC" id="B3t-HP-KKm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPc-7X-uxF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1992.8" y="-590.10494752623697"/>
+        </scene>
+        <!--Playing Movie Trailer Controller-->
+        <scene sceneID="SFk-zU-FGU">
+            <objects>
+                <viewController id="wf3-A5-EXh" customClass="PlayingMovieTrailerController" customModule="The_10___Spencer_Cawley" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vtk-qE-ATm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ti8-fq-VmG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3tD-vj-jFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2783" y="-674"/>
         </scene>
         <!--Coming Soon-->
         <scene sceneID="Dmh-DJ-jPt">
