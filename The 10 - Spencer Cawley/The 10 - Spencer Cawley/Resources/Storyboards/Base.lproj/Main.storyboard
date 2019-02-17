@@ -338,17 +338,20 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRS-pQ-moc">
-                                                <rect key="frame" x="29" y="470" width="150" height="40"/>
+                                                <rect key="frame" x="29" y="472" width="150" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="eOv-Ow-VGF"/>
                                                     <constraint firstAttribute="height" constant="40" id="epR-MH-HgU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                                <state key="normal" title="See Trailer"/>
+                                                <state key="normal" title="Watch Trailer"/>
+                                                <connections>
+                                                    <action selector="watchTrailerButton:" destination="SXx-iM-QRU" eventType="touchUpInside" id="zEE-V8-IVb"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYi-Ja-Vcz">
-                                                <rect key="frame" x="29.5" y="518" width="316" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="29.5" y="522" width="316" height="22"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -383,18 +386,17 @@
                                             <constraint firstItem="A3B-Xh-ZAu" firstAttribute="leading" secondItem="yen-cN-cYf" secondAttribute="trailing" id="5fv-aJ-EXB"/>
                                             <constraint firstItem="BCJ-9w-z6H" firstAttribute="centerY" secondItem="xf5-Um-yJi" secondAttribute="centerY" id="Bih-Aa-PKX"/>
                                             <constraint firstItem="xf5-Um-yJi" firstAttribute="centerY" secondItem="yen-cN-cYf" secondAttribute="centerY" id="C6d-rw-lN2"/>
-                                            <constraint firstItem="yYi-Ja-Vcz" firstAttribute="top" secondItem="JRS-pQ-moc" secondAttribute="bottom" constant="8" id="CiS-If-q0p"/>
+                                            <constraint firstItem="yYi-Ja-Vcz" firstAttribute="top" secondItem="JRS-pQ-moc" secondAttribute="bottom" constant="10" id="CiS-If-q0p"/>
                                             <constraint firstItem="xf5-Um-yJi" firstAttribute="leading" secondItem="BCJ-9w-z6H" secondAttribute="trailing" constant="8" id="G3c-pU-VFn"/>
                                             <constraint firstAttribute="trailing" secondItem="aCz-n4-Owf" secondAttribute="trailing" constant="29.5" id="IRZ-9y-MJ0"/>
                                             <constraint firstItem="aCz-n4-Owf" firstAttribute="leading" secondItem="auA-io-49j" secondAttribute="leading" constant="29.5" id="LyF-ZP-p4h"/>
                                             <constraint firstAttribute="height" constant="850" id="MFL-l8-e39"/>
                                             <constraint firstItem="yYi-Ja-Vcz" firstAttribute="leading" secondItem="auA-io-49j" secondAttribute="leading" constant="29.5" id="NeH-xa-ubb"/>
-                                            <constraint firstItem="JRS-pQ-moc" firstAttribute="top" secondItem="aCz-n4-Owf" secondAttribute="bottom" constant="8" id="Vov-0E-H9d"/>
+                                            <constraint firstItem="JRS-pQ-moc" firstAttribute="top" secondItem="aCz-n4-Owf" secondAttribute="bottom" constant="10" id="Vov-0E-H9d"/>
                                             <constraint firstItem="A3B-Xh-ZAu" firstAttribute="top" secondItem="aCz-n4-Owf" secondAttribute="bottom" constant="10" id="Vuq-BI-O96"/>
                                             <constraint firstItem="yen-cN-cYf" firstAttribute="leading" secondItem="xf5-Um-yJi" secondAttribute="trailing" constant="3" id="Z7N-2R-P9p"/>
                                             <constraint firstAttribute="trailing" secondItem="A3B-Xh-ZAu" secondAttribute="trailing" constant="30" id="bI9-Pu-vX1"/>
                                             <constraint firstAttribute="trailing" secondItem="yYi-Ja-Vcz" secondAttribute="trailing" constant="29.5" id="eYs-Qb-3i1"/>
-                                            <constraint firstItem="yYi-Ja-Vcz" firstAttribute="top" secondItem="JRS-pQ-moc" secondAttribute="bottom" constant="8" id="euS-MD-Sqe"/>
                                             <constraint firstItem="JRS-pQ-moc" firstAttribute="leading" secondItem="auA-io-49j" secondAttribute="leading" constant="29" id="gdX-zj-blL"/>
                                             <constraint firstItem="aCz-n4-Owf" firstAttribute="top" secondItem="auA-io-49j" secondAttribute="top" constant="12" id="knS-ZO-ftw"/>
                                             <constraint firstItem="A3B-Xh-ZAu" firstAttribute="leading" secondItem="yen-cN-cYf" secondAttribute="trailing" id="tp3-5O-lqW"/>
@@ -428,17 +430,19 @@
                         <outlet property="upcomingMovieDetailImage" destination="aCz-n4-Owf" id="S7r-yv-tb4"/>
                         <outlet property="upcomingMovieDetailOverview" destination="yYi-Ja-Vcz" id="UQj-St-Xj1"/>
                         <outlet property="upcomingMovieDetailRating" destination="yen-cN-cYf" id="9Ed-LM-E2B"/>
-                        <segue destination="F98-0Y-T9q" kind="show" identifier="toTrailerVC" id="ahd-Xa-MaV"/>
+                        <outlet property="upcomingMovieID" destination="BCJ-9w-z6H" id="mmz-Kv-uBg"/>
+                        <outlet property="watchTrailerButton" destination="JRS-pQ-moc" id="RN8-ao-Ril"/>
+                        <segue destination="F98-0Y-T9q" kind="show" identifier="toUpcomingTrailerVC" id="2Hz-lh-crh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jeA-ds-M81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1992.8" y="401.19940029985008"/>
         </scene>
-        <!--View Controller-->
+        <!--Upcoming Movie Trailer Controller-->
         <scene sceneID="O3m-8p-mSl">
             <objects>
-                <viewController id="F98-0Y-T9q" sceneMemberID="viewController">
+                <viewController id="F98-0Y-T9q" customClass="UpcomingMovieTrailerController" customModule="The_10___Spencer_Cawley" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LAj-gg-W7X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -471,7 +475,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl2-ta-TaX">
-                                                <rect key="frame" x="29.5" y="468" width="150" height="40"/>
+                                                <rect key="frame" x="29.5" y="472" width="150" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="aQC-Gc-JYN"/>
                                                     <constraint firstAttribute="height" constant="40" id="itG-wR-7WE"/>
@@ -508,7 +512,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekq-Qa-oVb">
-                                                <rect key="frame" x="29.5" y="518" width="316" height="22"/>
+                                                <rect key="frame" x="29.5" y="522" width="316" height="22"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -528,7 +532,7 @@
                                             <constraint firstItem="JjB-dF-p6c" firstAttribute="leading" secondItem="NCZ-hZ-GlM" secondAttribute="trailing" constant="4.5" id="ZLv-vs-Vd9"/>
                                             <constraint firstAttribute="trailing" secondItem="cyZ-fJ-tu5" secondAttribute="trailing" constant="29.5" id="dMu-5V-p51"/>
                                             <constraint firstItem="Ekq-Qa-oVb" firstAttribute="top" secondItem="Cl2-ta-TaX" secondAttribute="bottom" constant="10" id="jl8-We-1GE"/>
-                                            <constraint firstItem="Cl2-ta-TaX" firstAttribute="top" secondItem="cyZ-fJ-tu5" secondAttribute="bottom" constant="6" id="kYS-A8-Ex4"/>
+                                            <constraint firstItem="Cl2-ta-TaX" firstAttribute="top" secondItem="cyZ-fJ-tu5" secondAttribute="bottom" constant="10" id="kYS-A8-Ex4"/>
                                             <constraint firstAttribute="height" constant="850" id="mDm-9v-Mda"/>
                                             <constraint firstItem="cyZ-fJ-tu5" firstAttribute="top" secondItem="EC3-7E-WVg" secondAttribute="top" constant="12" id="pns-Ww-Kpp"/>
                                             <constraint firstItem="xgG-rA-S46" firstAttribute="top" secondItem="cyZ-fJ-tu5" secondAttribute="bottom" constant="10" id="t6e-yu-qL3"/>
@@ -543,10 +547,20 @@
                                     <constraint firstAttribute="trailing" secondItem="EC3-7E-WVg" secondAttribute="trailing" id="muI-GV-LR8"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0D-di-zxY">
+                                <rect key="frame" x="309" y="735" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="FNk-c8-rVt"/>
+                                    <constraint firstAttribute="height" constant="56" id="fk6-8s-Oet"/>
+                                </constraints>
+                                <state key="normal" image="ticket"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QW1-Nj-u95" firstAttribute="trailing" secondItem="u0D-di-zxY" secondAttribute="trailing" constant="10" id="8j5-zP-ypM"/>
                             <constraint firstItem="Gii-Fb-ouo" firstAttribute="leading" secondItem="QW1-Nj-u95" secondAttribute="leading" id="JFX-PB-O0c"/>
+                            <constraint firstItem="QW1-Nj-u95" firstAttribute="bottom" secondItem="u0D-di-zxY" secondAttribute="bottom" constant="10" id="KJQ-0Q-l4K"/>
                             <constraint firstItem="Gii-Fb-ouo" firstAttribute="trailing" secondItem="QW1-Nj-u95" secondAttribute="trailing" id="Ml8-m9-9SD"/>
                             <constraint firstItem="EC3-7E-WVg" firstAttribute="width" secondItem="ac0-R1-FrY" secondAttribute="width" id="bP1-Ra-sSr"/>
                             <constraint firstItem="Gii-Fb-ouo" firstAttribute="top" secondItem="QW1-Nj-u95" secondAttribute="top" id="v2c-bm-xXP"/>
@@ -554,19 +568,23 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QW1-Nj-u95"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(Title)" id="mEf-tA-EXK"/>
+                    <navigationItem key="navigationItem" title="(Title)" id="mEf-tA-EXK">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" id="JE4-5P-J4t"/>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
+                        <outlet property="playTrailerButton" destination="Cl2-ta-TaX" id="mYH-d8-B3K"/>
                         <outlet property="playingMovieDetailImage" destination="cyZ-fJ-tu5" id="c9Y-M9-f3W"/>
                         <outlet property="playingMovieDetailOverview" destination="Ekq-Qa-oVb" id="hZp-Gd-KST"/>
                         <outlet property="playingMovieDetailRating" destination="xgG-rA-S46" id="XMr-rH-VBb"/>
                         <outlet property="playingMovieID" destination="NCZ-hZ-GlM" id="DYB-2h-z2p"/>
-                        <segue destination="wf3-A5-EXh" kind="show" identifier="toTrailerVC" id="qVl-ti-62a"/>
+                        <outlet property="ticketButton" destination="u0D-di-zxY" id="4eT-3H-GWR"/>
+                        <segue destination="wf3-A5-EXh" kind="show" identifier="toPlayingTrailerVC" id="qVl-ti-62a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0x-5a-b4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2023" y="-492"/>
+            <point key="canvasLocation" x="2021.5999999999999" y="-492.05397301349331"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MLI-9D-nDf">
@@ -616,5 +634,6 @@
         <image name="REALupcomingSelected" width="50" height="50"/>
         <image name="cart" width="33" height="33"/>
         <image name="popcorn" width="40" height="40"/>
+        <image name="ticket" width="45" height="45"/>
     </resources>
 </document>

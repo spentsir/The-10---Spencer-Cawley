@@ -9,20 +9,20 @@
 import Foundation
 
 struct JSONDictionary: Decodable {
-    let results: [Movie]
+    let results         : [Movie]
 }
 
 struct Movie: Decodable {
-    let voteAverage: Double
-    let title: String
-    let posterPath: String?
-    let overview: String
-    let id: Int
+    let voteAverage     : Double
+    let title           : String
+    let posterPath      : String?
+    let overview        : String
+    let id              : Int
     
     enum CodingKeys: String, CodingKey {
         case voteAverage = "vote_average"
         case title
-        case posterPath = "poster_path"
+        case posterPath  = "poster_path"
         case overview
         case id
     }

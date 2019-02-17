@@ -41,9 +41,9 @@ class PlayingMovieController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "playingMovieCell", for: indexPath) as? PlayingMovieCell else { return UITableViewCell() }
-        let movie = movieController.movies[indexPath.row]
-        cell.movie = movie
+        guard let cell  = tableView.dequeueReusableCell(withIdentifier: "playingMovieCell", for: indexPath) as? PlayingMovieCell else { return UITableViewCell() }
+        let movie       = movieController.movies[indexPath.row]
+        cell.movie      = movie
         
         movieController.fetchMovieImage(movie: movie) { (image) in
             guard let image = image else { return }
@@ -56,10 +56,10 @@ class PlayingMovieController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toPlayingMovieDetailVC" {
+        if segue.identifier         == "toPlayingMovieDetailVC" {
             guard let destinationVC = segue.destination as? PlayingMovieDetailController,
-                let indexPath = tableView.indexPathForSelectedRow else { return }
-            destinationVC.movie = movieController.movies[indexPath.row]
+                let indexPath       = tableView.indexPathForSelectedRow else { return }
+            destinationVC.movie     = movieController.movies[indexPath.row]
         }
     }
 }

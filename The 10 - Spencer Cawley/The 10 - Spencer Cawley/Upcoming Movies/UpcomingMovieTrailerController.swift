@@ -1,5 +1,5 @@
 //
-//  PlayingMovieTrailerController.swift
+//  UpcomingMovieTrailerController.swift
 //  The 10 - Spencer Cawley
 //
 //  Created by Spencer Cawley on 2/16/19.
@@ -9,8 +9,8 @@
 import UIKit
 import WebKit
 
-class PlayingMovieTrailerController: UIViewController, WKNavigationDelegate {
-    
+class UpcomingMovieTrailerController: UIViewController, WKNavigationDelegate {
+
     var url     : URL!
     var webView : WKWebView!
     

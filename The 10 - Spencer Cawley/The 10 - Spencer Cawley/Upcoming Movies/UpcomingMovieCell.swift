@@ -21,18 +21,18 @@ class UpcomingMovieCell: UITableViewCell {
         updateImageView()
     }
     
-    @IBOutlet weak var upcomingMovieImage: UIImageView!
-    @IBOutlet weak var upcomingMovieTitle: UILabel!
-    @IBOutlet weak var upcomingMovieRating: UILabel!
-    @IBOutlet weak var upcomingMovieOverview: UILabel!
+    @IBOutlet weak var upcomingMovieImage        : UIImageView!
+    @IBOutlet weak var upcomingMovieTitle        : UILabel!
+    @IBOutlet weak var upcomingMovieRating       : UILabel!
+    @IBOutlet weak var upcomingMovieOverview     : UILabel!
     
     
     func updateViews() {
         guard let movie = movie else { return }
-        upcomingMovieTitle.text = movie.title
-        upcomingMovieRating.text = "\(movie.voteAverage)"
-        upcomingMovieOverview.text = movie.overview
-        upcomingMovieRating.isHidden = true
+        upcomingMovieTitle.text                  = movie.title
+        upcomingMovieRating.text                 = "\(movie.voteAverage)"
+        upcomingMovieOverview.text               = movie.overview
+        upcomingMovieRating.isHidden             = true
     }
     
     func updateImageView() {

@@ -12,36 +12,37 @@ import WebKit
 
 class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
     
-    var movie: Movie?
+    var movie           : Movie?
     var movieController = MovieController()
-    var movieURL: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        updateImageView()
     }
     
     
-    @IBOutlet weak var playingMovieDetailImage: UIImageView!
-    @IBOutlet weak var playingMovieDetailRating: UILabel!
-    @IBOutlet weak var playingMovieDetailOverview: UILabel!
-    @IBOutlet weak var playingMovieID: UILabel!
+    @IBOutlet weak var playingMovieDetailImage      : UIImageView!
+    @IBOutlet weak var playingMovieDetailRating     : UILabel!
+    @IBOutlet weak var playingMovieDetailOverview   : UILabel!
+    @IBOutlet weak var playingMovieID               : UILabel!
+    @IBOutlet weak var playTrailerButton            : UIButton!
+    @IBOutlet weak var ticketButton: UIButton!
+    
     
     @IBAction func playTrailerButton(_ sender: UIButton) {
         guard let movie = movie else { return }
-        let movieID = String(movie.id)
+        let movieID     = String(movie.id)
         fetchVideo(for: movieID)
     }
     
     
     func updateViews() {
         guard let movie = movie else { return }
-        navigationItem.title = movie.title
-        playingMovieDetailRating.text = "\(movie.voteAverage)"
+        navigationItem.title            = movie.title
+        playingMovieDetailRating.text   = "\(movie.voteAverage)"
         playingMovieDetailOverview.text = movie.overview
-        playingMovieID.text = "\(movie.id)"
-        playingMovieID.isHidden = true
+        playingMovieID.text             = "\(movie.id)"
+        playingMovieID.isHidden         = true
         print(movie.id)
         
         movieController.fetchMovieImage(movie: movie) { (image) in
@@ -50,22 +51,47 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
                 self.playingMovieDetailImage.image = image
             }
         }
+        updateImageView()
+        updateTrailerButton()
+        updateTicketButton()
     }
     
     func updateImageView() {
         playingMovieDetailImage.layer.cornerRadius    = 20
         
         playingMovieDetailImage.layer.shadowColor     = UIColor.black.cgColor
-        playingMovieDetailImage.layer.shadowOffset    = CGSize(width: 0.0, height: 6.0)
-        playingMovieDetailImage.layer.shadowRadius    = 8
+        playingMovieDetailImage.layer.shadowOffset    = CGSize(width: 0.0, height: 9.0)
+        playingMovieDetailImage.layer.shadowRadius    = 5
         playingMovieDetailImage.layer.shadowOpacity   = 0.5
         playingMovieDetailImage.clipsToBounds         = true
         playingMovieDetailImage.layer.masksToBounds   = false
     }
     
+    func updateTrailerButton() {
+        playTrailerButton.setTitleColor(Colors.veryDarkGrey, for: .normal)
+        playTrailerButton.backgroundColor             = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        playTrailerButton.layer.cornerRadius          = playTrailerButton.frame.height / 2
+        
+        playTrailerButton.layer.shadowColor           = UIColor.black.cgColor
+        playTrailerButton.layer.shadowOffset          = CGSize(width: 0.0, height: 6.0)
+        playTrailerButton.layer.shadowOpacity         = 0.5
+        playTrailerButton.layer.shadowRadius          = 8
+    }
+    
+    func updateTicketButton() {
+        ticketButton.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        ticketButton.layer.cornerRadius = ticketButton.frame.height / 2
+        
+        ticketButton.layer.shadowOpacity = 0.5
+        ticketButton.layer.shadowRadius = 8
+        ticketButton.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
+        ticketButton.layer.shadowColor = UIColor.black.cgColor
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "toTrailerVC", let destinationVC = segue.destination as? PlayingMovieTrailerController else { return }
-        destinationVC.url = sender as? URL
+        guard segue.identifier == "toPlayingTrailerVC",
+            let destinationVC   = segue.destination as? PlayingMovieTrailerController else { return }
+        destinationVC.url       = sender as? URL
     }
 }
 
@@ -73,7 +99,7 @@ extension PlayingMovieDetailController {
 
     func playMovie(with key: String) {
         let url = URL(string: "https://www.youtube.com/embed/\(key)")!
-        performSegue(withIdentifier: "toTrailerVC", sender: url)
+        performSegue(withIdentifier: "toPlayingTrailerVC", sender: url)
         print(url)
     }
 
@@ -86,16 +112,13 @@ extension PlayingMovieDetailController {
                 print(error.localizedDescription)
                 return
             }
-
-
-            guard let data = data else {return}
-
-            let movie = try? JSONDecoder().decode(Trailer.self, from: data)
+            
+            guard let data  = data else {return}
+            let movie       = try? JSONDecoder().decode(Trailer.self, from: data)
             DispatchQueue.main.async {
                 self.playMovie(with: movie!.results!.first!.key!)
                 print(movie!.results!.first!.key!)
             }
-
             }.resume()
     }
 }

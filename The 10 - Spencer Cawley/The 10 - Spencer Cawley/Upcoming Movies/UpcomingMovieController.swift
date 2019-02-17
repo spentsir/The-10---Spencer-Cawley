@@ -41,9 +41,9 @@ class UpcomingMovieController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "upcomingMovieCell", for: indexPath) as? UpcomingMovieCell else { return UITableViewCell() }
-        let movie = movieController.movies[indexPath.row]
-        cell.movie = movie
+        guard let cell  = tableView.dequeueReusableCell(withIdentifier: "upcomingMovieCell", for: indexPath) as? UpcomingMovieCell else { return UITableViewCell() }
+        let movie       = movieController.movies[indexPath.row]
+        cell.movie      = movie
         
         movieController.fetchMovieImage(movie: movie) { (image) in
             guard let image = image else { return }
@@ -58,8 +58,8 @@ class UpcomingMovieController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toUpcomingDetailVC" {
             guard let destinationVC = segue.destination as? UpcomingMovieDetailController,
-            let indexPath = tableView.indexPathForSelectedRow else { return }
-            destinationVC.movie = movieController.movies[indexPath.row]
+            let indexPath           = tableView.indexPathForSelectedRow else { return }
+            destinationVC.movie     = movieController.movies[indexPath.row]
         }
     }
 }
