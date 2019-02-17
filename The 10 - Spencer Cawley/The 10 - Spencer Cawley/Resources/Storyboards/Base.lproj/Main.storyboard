@@ -116,9 +116,7 @@
                             <outlet property="delegate" destination="DGG-2q-IvY" id="5Ip-M9-I7C"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Now Playing" id="IVt-bd-lSM">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" id="3Lg-Cd-y1X"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Now Playing" id="IVt-bd-lSM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yr-4y-gVP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -224,9 +222,7 @@
                             <outlet property="delegate" destination="fxC-jL-bOh" id="xer-gI-ehF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Coming Soon" id="Mdv-Ke-loU">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" id="ISn-wN-sSe"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Coming Soon" id="Mdv-Ke-loU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehP-00-hfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -240,10 +236,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="baw-g4-B9j">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baw-g4-B9j">
                                 <rect key="frame" x="0.0" y="116" width="375" height="685"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auA-io-49j" userLabel="Content View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auA-io-49j" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCz-n4-Owf">
@@ -265,26 +261,26 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popcorn" translatesAutoresizingMaskIntoConstraints="NO" id="xf5-Um-yJi">
-                                                <rect key="frame" x="222" y="471" width="35" height="35"/>
+                                                <rect key="frame" x="221" y="471" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="gB2-EE-rzQ"/>
                                                     <constraint firstAttribute="height" constant="35" id="jf8-A6-vJS"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yen-cN-cYf">
-                                                <rect key="frame" x="260" y="472" width="42.5" height="32.5"/>
+                                                <rect key="frame" x="259" y="472" width="43" height="33"/>
                                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3B-Xh-ZAu">
-                                                <rect key="frame" x="302.5" y="472" width="42.5" height="32.5"/>
+                                                <rect key="frame" x="302" y="472" width="43" height="33"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCJ-9w-z6H">
-                                                <rect key="frame" x="183" y="478" width="31" height="21"/>
+                                                <rect key="frame" x="182" y="478" width="31" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -309,6 +305,7 @@
                                             <constraint firstItem="cyx-e7-eI1" firstAttribute="leading" secondItem="auA-io-49j" secondAttribute="leading" constant="29.5" id="QHj-Ny-abz"/>
                                             <constraint firstItem="JRS-pQ-moc" firstAttribute="top" secondItem="aCz-n4-Owf" secondAttribute="bottom" constant="10" id="Vov-0E-H9d"/>
                                             <constraint firstItem="A3B-Xh-ZAu" firstAttribute="top" secondItem="aCz-n4-Owf" secondAttribute="bottom" constant="10" id="Vuq-BI-O96"/>
+                                            <constraint firstAttribute="height" constant="1000" id="WJt-kI-rbc"/>
                                             <constraint firstItem="yen-cN-cYf" firstAttribute="leading" secondItem="xf5-Um-yJi" secondAttribute="trailing" constant="3" id="Z7N-2R-P9p"/>
                                             <constraint firstAttribute="trailing" secondItem="A3B-Xh-ZAu" secondAttribute="trailing" constant="30" id="bI9-Pu-vX1"/>
                                             <constraint firstItem="JRS-pQ-moc" firstAttribute="leading" secondItem="auA-io-49j" secondAttribute="leading" constant="29" id="gdX-zj-blL"/>
@@ -336,9 +333,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="joU-vK-EOd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(Title)" id="70p-gt-6FW">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" id="hO2-1s-ggh"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="(Title)" id="70p-gt-6FW"/>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
                         <outlet property="upcomingMovieDetailImage" destination="aCz-n4-Owf" id="S7r-yv-tb4"/>
@@ -380,7 +375,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="685"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC3-7E-WVg" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-fJ-tu5">
                                                 <rect key="frame" x="29.5" y="12" width="316" height="450"/>
@@ -425,7 +420,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekq-Qa-oVb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekq-Qa-oVb">
                                                 <rect key="frame" x="29.5" y="522" width="316" height="22"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -445,7 +440,7 @@
                                             <constraint firstItem="cyZ-fJ-tu5" firstAttribute="leading" secondItem="EC3-7E-WVg" secondAttribute="leading" constant="29.5" id="YWe-9k-o6C"/>
                                             <constraint firstItem="JjB-dF-p6c" firstAttribute="leading" secondItem="NCZ-hZ-GlM" secondAttribute="trailing" constant="4.5" id="ZLv-vs-Vd9"/>
                                             <constraint firstAttribute="trailing" secondItem="cyZ-fJ-tu5" secondAttribute="trailing" constant="29.5" id="dMu-5V-p51"/>
-                                            <constraint firstAttribute="height" constant="1200" id="jGT-aj-AII"/>
+                                            <constraint firstAttribute="height" constant="900" id="jGT-aj-AII"/>
                                             <constraint firstItem="Ekq-Qa-oVb" firstAttribute="top" secondItem="Cl2-ta-TaX" secondAttribute="bottom" constant="10" id="jl8-We-1GE"/>
                                             <constraint firstItem="Cl2-ta-TaX" firstAttribute="top" secondItem="cyZ-fJ-tu5" secondAttribute="bottom" constant="10" id="kYS-A8-Ex4"/>
                                             <constraint firstItem="cyZ-fJ-tu5" firstAttribute="top" secondItem="EC3-7E-WVg" secondAttribute="top" constant="12" id="pns-Ww-Kpp"/>
@@ -486,9 +481,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QW1-Nj-u95"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(Title)" id="mEf-tA-EXK">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" id="JE4-5P-J4t"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="(Title)" id="mEf-tA-EXK"/>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
                         <outlet property="playTrailerButton" destination="Cl2-ta-TaX" id="mYH-d8-B3K"/>
@@ -550,7 +543,6 @@
         <image name="REALnowPlayingSelected" width="50" height="50"/>
         <image name="REALupcoming" width="50" height="50"/>
         <image name="REALupcomingSelected" width="50" height="50"/>
-        <image name="cart" width="33" height="33"/>
         <image name="popcorn" width="40" height="40"/>
         <image name="ticket" width="45" height="45"/>
     </resources>
