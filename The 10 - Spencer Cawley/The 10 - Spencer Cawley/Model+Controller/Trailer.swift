@@ -8,18 +8,18 @@
 
 import Foundation
 
-class KeyModel: Codable {
+class Trailer: Codable {
     
     var id: Int?
-    var results: [KeyData]?
+    var results: [TrailerData]?
     
-    init(id: Int?, results: [KeyData]?) {
+    init(id: Int?, results: [TrailerData]?) {
         self.id = id
         self.results = results
     }
 }
 
-class KeyData: Codable {
+class TrailerData: Codable {
     
     var id: String?
     var key: String?

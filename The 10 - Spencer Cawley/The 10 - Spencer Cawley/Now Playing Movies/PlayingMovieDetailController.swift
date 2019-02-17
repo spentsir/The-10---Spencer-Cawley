@@ -22,6 +22,7 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
         updateImageView()
     }
     
+    
     @IBOutlet weak var playingMovieDetailImage: UIImageView!
     @IBOutlet weak var playingMovieDetailRating: UILabel!
     @IBOutlet weak var playingMovieDetailOverview: UILabel!
@@ -89,7 +90,7 @@ extension PlayingMovieDetailController {
 
             guard let data = data else {return}
 
-            let movie = try? JSONDecoder().decode(KeyModel.self, from: data)
+            let movie = try? JSONDecoder().decode(Trailer.self, from: data)
             DispatchQueue.main.async {
                 self.playMovie(with: movie!.results!.first!.key!)
                 print(movie!.results!.first!.key!)
