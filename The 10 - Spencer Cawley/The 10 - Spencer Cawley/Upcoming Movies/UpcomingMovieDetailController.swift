@@ -23,10 +23,10 @@ class UpcomingMovieDetailController: UIViewController, WKNavigationDelegate {
     
     @IBOutlet weak var upcomingMovieDetailImage     : UIImageView!
     @IBOutlet weak var upcomingMovieDetailRating    : UILabel!
-    @IBOutlet weak var upcomingMovieDetailOverview  : UILabel!
+    @IBOutlet weak var upcomingMovieDetailOverview: UILabel!
+    
     @IBOutlet weak var upcomingMovieID              : UILabel!
     @IBOutlet weak var watchTrailerButton           : UIButton!
-    
     
     @IBAction func watchTrailerButton(_ sender: UIButton) {
         guard let movie = movie else { return }

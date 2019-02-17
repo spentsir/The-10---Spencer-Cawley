@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import WebKit
+import SafariServices
 
 class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
     
@@ -19,7 +20,6 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         updateViews()
     }
-    
     
     @IBOutlet weak var playingMovieDetailImage      : UIImageView!
     @IBOutlet weak var playingMovieDetailRating     : UILabel!
@@ -35,6 +35,22 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
         fetchVideo(for: movieID)
     }
     
+    @IBAction func getTicketsButton(_ sender: UIButton) {
+        guard let movie = movie else { return }
+        let movieTitle = movie.title
+        let trimmedTitle = movieTitle.replacingOccurrences(of: " ", with: "")
+        showSafariVC(url: "https://www.fandango.com/search/?q=\(trimmedTitle)")
+        print(trimmedTitle)
+    }
+    
+    func showSafariVC(url: String) {
+        guard let url = URL(string: url) else { return }
+        
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true)
+    }
+    
+    
     
     func updateViews() {
         guard let movie = movie else { return }
@@ -44,6 +60,7 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
         playingMovieID.text             = "\(movie.id)"
         playingMovieID.isHidden         = true
         print(movie.id)
+        print(movie.title)
         
         movieController.fetchMovieImage(movie: movie) { (image) in
             guard let image = image else { return }
@@ -69,6 +86,7 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
     
     func updateTrailerButton() {
         playTrailerButton.setTitleColor(Colors.veryDarkGrey, for: .normal)
+        playTrailerButton.setTitleColor(Colors.red, for: .highlighted)
         playTrailerButton.backgroundColor             = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         playTrailerButton.layer.cornerRadius          = playTrailerButton.frame.height / 2
         
