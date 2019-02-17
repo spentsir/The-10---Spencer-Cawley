@@ -12,13 +12,13 @@ class MovieController {
     
     var movies = [Movie]()
     let playingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
-    let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming")!
+//    let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming")!
+    let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=725427eb27bb2372e7c69e11e5256f55&language=en-US&page=2")
     
     func fetchPlayingMovie(completion: @escaping([Movie]?) -> Void) {
         
         let queries = [
-            "total_results" : "10",
-            "api_key" : "725427eb27bb2372e7c69e11e5256f55"
+            "api_key" : "725427eb27bb2372e7c69e11e5256f55",
         ]
         
         let url = playingBaseURL.withQueries(queries)!
@@ -57,7 +57,8 @@ class MovieController {
             "api_key" : "725427eb27bb2372e7c69e11e5256f55"
         ]
         
-        let url = upcomingBaseURL.withQueries(queries)!
+//        let url = upcomingBaseURL.withQueries(queries)!
+        let url = upcomingBaseURL!
         print(url)
         
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in

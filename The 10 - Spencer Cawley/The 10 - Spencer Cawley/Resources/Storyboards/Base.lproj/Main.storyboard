@@ -336,6 +336,7 @@
                     <navigationItem key="navigationItem" title="(Title)" id="70p-gt-6FW"/>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
+                        <outlet property="outOf10" destination="A3B-Xh-ZAu" id="3WX-hi-kAB"/>
                         <outlet property="upcomingMovieDetailImage" destination="aCz-n4-Owf" id="S7r-yv-tb4"/>
                         <outlet property="upcomingMovieDetailOverview" destination="cyx-e7-eI1" id="3yg-ob-7U4"/>
                         <outlet property="upcomingMovieDetailRating" destination="yen-cN-cYf" id="9Ed-LM-E2B"/>

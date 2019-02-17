@@ -42,8 +42,8 @@ class PlayingMovieController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell  = tableView.dequeueReusableCell(withIdentifier: "playingMovieCell", for: indexPath) as? PlayingMovieCell else { return UITableViewCell() }
-        let movie       = movieController.movies[indexPath.row]
-        cell.movie      = movie
+        let movie = movieController.movies[indexPath.row]
+        cell.movie = movie
         
         movieController.fetchMovieImage(movie: movie) { (image) in
             guard let image = image else { return }

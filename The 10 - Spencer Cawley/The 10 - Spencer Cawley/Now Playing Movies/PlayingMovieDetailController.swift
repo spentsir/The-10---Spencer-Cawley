@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import AVKit
-import WebKit
 import SafariServices
 
-class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
+class PlayingMovieDetailController: UIViewController {
     
-    var movie           : Movie?
+    var movie: Movie?
     var movieController = MovieController()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
@@ -103,24 +101,15 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
         ticketButton.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
         ticketButton.layer.shadowColor = UIColor.black.cgColor
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "toPlayingTrailerVC",
-            let destinationVC = segue.destination as? PlayingMovieTrailerController else { return }
-        destinationVC.url = sender as? URL
-    }
 }
 
 extension PlayingMovieDetailController {
 
     func playMovie(with key: String) {
-        let url = URL(string: "https://www.youtube.com/embed/\(key)")!
-        performSegue(withIdentifier: "toPlayingTrailerVC", sender: url)
-        print(url)
+        showSafariVC(url: "https://www.youtube.com/embed/\(key)")
     }
 
     func fetchVideo(for movieId: String) {
-
         let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieId)/videos?api_key=725427eb27bb2372e7c69e11e5256f55&language=en-US")!
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -128,9 +117,9 @@ extension PlayingMovieDetailController {
                 print(error.localizedDescription)
                 return
             }
-            
-            guard let data  = data else {return}
-            let movie       = try? JSONDecoder().decode(Trailer.self, from: data)
+
+            guard let data = data else {return}
+            let movie = try? JSONDecoder().decode(Trailer.self, from: data)
             DispatchQueue.main.async {
                 self.playMovie(with: movie!.results!.first!.key!)
                 print(movie!.results!.first!.key!)

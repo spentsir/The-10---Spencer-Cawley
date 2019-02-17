@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import AVKit
-import WebKit
+import SafariServices
 
-class UpcomingMovieDetailController: UIViewController, WKNavigationDelegate {
+class UpcomingMovieDetailController: UIViewController {
     
     var movie           : Movie?
     var movieController = MovieController()
@@ -24,6 +23,8 @@ class UpcomingMovieDetailController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var upcomingMovieDetailImage: UIImageView!
     @IBOutlet weak var upcomingMovieDetailRating: UILabel!
     @IBOutlet weak var upcomingMovieDetailOverview: UILabel!
+    @IBOutlet weak var outOf10: UILabel!
+    
     
     @IBOutlet weak var upcomingMovieID: UILabel!
     @IBOutlet weak var watchTrailerButton: UIButton!
@@ -34,12 +35,25 @@ class UpcomingMovieDetailController: UIViewController, WKNavigationDelegate {
         fetchVideo(for: movieID)
     }
     
+    func showSafariVC(url: String) {
+        guard let url = URL(string: url) else { return }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true)
+    }
+    
     func updateViews() {
         guard let movie = movie else { return }
         navigationItem.title = movie.title
-        upcomingMovieDetailRating.text = "\(movie.voteAverage)"
+//        upcomingMovieDetailRating.text = "\(movie.voteAverage)"
         upcomingMovieDetailOverview.text = movie.overview
         upcomingMovieID.text = "\(movie.id)"
+        
+        if upcomingMovieDetailRating.text == "\(0.0)" {
+            upcomingMovieDetailRating.text = "TBD"
+            outOf10.isHidden = true
+        } else {
+            upcomingMovieDetailRating.text = "\(movie.voteAverage)"
+        }
         print(movie.id)
         
         
@@ -74,19 +88,12 @@ class UpcomingMovieDetailController: UIViewController, WKNavigationDelegate {
         watchTrailerButton.layer.shadowOpacity = 0.5
         watchTrailerButton.layer.shadowRadius = 8
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "toUpcomingTrailerVC", let destinationVC = segue.destination as? UpcomingMovieTrailerController else { return }
-        destinationVC.url = sender as? URL
-    }
 }
 
 extension UpcomingMovieDetailController {
     
     func playMovie(with key: String) {
-        let url = URL(string: "https://www.youtube.com/embed/\(key)")!
-        performSegue(withIdentifier: "toUpcomingTrailerVC", sender: url)
-        print(url)
+        showSafariVC(url: "https://www.youtube.com/embed/\(key)")
     }
     
     func fetchVideo(for movieId: String) {
