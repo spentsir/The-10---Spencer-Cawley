@@ -21,31 +21,29 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
         updateViews()
     }
     
-    @IBOutlet weak var playingMovieDetailImage      : UIImageView!
-    @IBOutlet weak var playingMovieDetailRating     : UILabel!
-    @IBOutlet weak var playingMovieDetailOverview   : UILabel!
-    @IBOutlet weak var playingMovieID               : UILabel!
-    @IBOutlet weak var playTrailerButton            : UIButton!
+    @IBOutlet weak var playingMovieDetailImage: UIImageView!
+    @IBOutlet weak var playingMovieDetailRating: UILabel!
+    @IBOutlet weak var playingMovieDetailOverview: UILabel!
+    @IBOutlet weak var playingMovieID: UILabel!
+    @IBOutlet weak var playTrailerButton: UIButton!
     @IBOutlet weak var ticketButton: UIButton!
     
     
     @IBAction func playTrailerButton(_ sender: UIButton) {
         guard let movie = movie else { return }
-        let movieID     = String(movie.id)
+        let movieID = String(movie.id)
         fetchVideo(for: movieID)
     }
     
     @IBAction func getTicketsButton(_ sender: UIButton) {
         guard let movie = movie else { return }
-        let movieTitle = movie.title
-        let trimmedTitle = movieTitle.replacingOccurrences(of: " ", with: "")
-        showSafariVC(url: "https://www.fandango.com/search/?q=\(trimmedTitle)")
-        print(trimmedTitle)
+        let title = movie.title
+        let movieTitle = title.replacingOccurrences(of: " ", with: "%20")
+        showSafariVC(url: "https://www.fandango.com/search/?q=\(movieTitle)")
     }
     
     func showSafariVC(url: String) {
         guard let url = URL(string: url) else { return }
-        
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true)
     }
@@ -54,11 +52,11 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
     
     func updateViews() {
         guard let movie = movie else { return }
-        navigationItem.title            = movie.title
-        playingMovieDetailRating.text   = "\(movie.voteAverage)"
+        navigationItem.title = movie.title
+        playingMovieDetailRating.text = "\(movie.voteAverage)"
         playingMovieDetailOverview.text = movie.overview
-        playingMovieID.text             = "\(movie.id)"
-        playingMovieID.isHidden         = true
+        playingMovieID.text = "\(movie.id)"
+        playingMovieID.isHidden = true
         print(movie.id)
         print(movie.title)
         
@@ -108,8 +106,8 @@ class PlayingMovieDetailController: UIViewController, WKNavigationDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "toPlayingTrailerVC",
-            let destinationVC   = segue.destination as? PlayingMovieTrailerController else { return }
-        destinationVC.url       = sender as? URL
+            let destinationVC = segue.destination as? PlayingMovieTrailerController else { return }
+        destinationVC.url = sender as? URL
     }
 }
 

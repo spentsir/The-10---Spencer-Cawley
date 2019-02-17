@@ -11,8 +11,8 @@ import WebKit
 
 class PlayingMovieTrailerController: UIViewController, WKNavigationDelegate {
     
-    var url     : URL!
-    var webView : WKWebView!
+    var url: URL!
+    var webView: WKWebView!
     
     override func viewDidLoad() {
         webView.load(URLRequest(url: url))
@@ -20,8 +20,8 @@ class PlayingMovieTrailerController: UIViewController, WKNavigationDelegate {
     }
     
     override func loadView() {
-        webView                     = WKWebView()
-        webView.navigationDelegate  = self
-        view                        = webView
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        view = webView
     }
 }

@@ -14,26 +14,26 @@ class Trailer: Codable {
     var results: [TrailerData]?
     
     init(id: Int?, results: [TrailerData]?) {
-        self.id         = id
-        self.results    = results
+        self.id = id
+        self.results = results
     }
 }
 
 class TrailerData: Codable {
     
-    var id              : String?
-    var key             : String?
-    var name            : String?
-    var site            : String?
-    var size            : Int?
-    var type            : String?
+    var id: String?
+    var key: String?
+    var name: String?
+    var site: String?
+    var size: Int?
+    var type: String?
     
     init(id: String?, key: String?, name: String?, site: String?, size: Int?, type: String?) {
-        self.id         = id
-        self.key        = key
-        self.name       = name
-        self.site       = site
-        self.size       = size
-        self.type       = type
+        self.id = id
+        self.key = key
+        self.name = name
+        self.site = site
+        self.size = size
+        self.type = type
     }
 }

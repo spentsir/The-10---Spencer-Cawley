@@ -10,26 +10,26 @@ import UIKit
 
 class MovieController {
     
-    var movies          = [Movie]()
-    let playingBaseURL  = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
+    var movies = [Movie]()
+    let playingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
     let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming")!
     
     func fetchPlayingMovie(completion: @escaping([Movie]?) -> Void) {
         
         let queries = [
             "total_results" : "10",
-            "api_key"       : "725427eb27bb2372e7c69e11e5256f55"
+            "api_key" : "725427eb27bb2372e7c69e11e5256f55"
         ]
         
         let url = playingBaseURL.withQueries(queries)!
         print(url)
     
-        let dataTask    = URLSession.shared.dataTask(with: url) { (data, _, error) in
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let data = data {
                 do {
                     let jsonDecoder = JSONDecoder()
                     let decodedData = try jsonDecoder.decode(JSONDictionary.self, from: data)
-                    let movies      = decodedData.results.compactMap( { $0})
+                    let movies = decodedData.results.compactMap( { $0})
                     
                     self.movies = movies
                     completion(movies)
@@ -54,18 +54,18 @@ class MovieController {
         
         let queries = [
             "total_results" : "10",
-            "api_key"       : "725427eb27bb2372e7c69e11e5256f55"
+            "api_key" : "725427eb27bb2372e7c69e11e5256f55"
         ]
         
         let url = upcomingBaseURL.withQueries(queries)!
         print(url)
         
-        let dataTask    = URLSession.shared.dataTask(with: url) { (data, _, error) in
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let data = data {
                 do {
                     let jsonDecoder = JSONDecoder()
                     let decodedData = try jsonDecoder.decode(JSONDictionary.self, from: data)
-                    let movies      = decodedData.results.compactMap( { $0})
+                    let movies = decodedData.results.compactMap( { $0})
                     
                     self.movies = movies
                     completion(movies)
@@ -91,9 +91,9 @@ class MovieController {
         
         let url = URL(string: "https://image.tmdb.org/t/p/w500")!.appendingPathComponent(posterPath)
         
-        let dataTask        = URLSession.shared.dataTask(with: url) { (data, _, error) in
-            if let data     = data {
-                let image   = UIImage(data: data)
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let data = data {
+                let image = UIImage(data: data)
                 completion(image)
             }
             if let error = error {
