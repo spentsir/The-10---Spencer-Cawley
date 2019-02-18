@@ -122,21 +122,6 @@
             </objects>
             <point key="canvasLocation" x="1204" y="-491"/>
         </scene>
-        <!--Playing Movie Trailer Controller-->
-        <scene sceneID="SFk-zU-FGU">
-            <objects>
-                <viewController id="wf3-A5-EXh" customClass="PlayingMovieTrailerController" customModule="The_10___Spencer_Cawley" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vtk-qE-ATm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Ti8-fq-VmG"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3tD-vj-jFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2783" y="-674"/>
-        </scene>
         <!--Coming Soon-->
         <scene sceneID="Dmh-DJ-jPt">
             <objects>
@@ -342,27 +327,11 @@
                         <outlet property="upcomingMovieDetailRating" destination="yen-cN-cYf" id="9Ed-LM-E2B"/>
                         <outlet property="upcomingMovieID" destination="BCJ-9w-z6H" id="mmz-Kv-uBg"/>
                         <outlet property="watchTrailerButton" destination="JRS-pQ-moc" id="RN8-ao-Ril"/>
-                        <segue destination="F98-0Y-T9q" kind="show" identifier="toUpcomingTrailerVC" id="2Hz-lh-crh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jeA-ds-M81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1992.8" y="401.19940029985008"/>
-        </scene>
-        <!--Upcoming Movie Trailer Controller-->
-        <scene sceneID="O3m-8p-mSl">
-            <objects>
-                <viewController id="F98-0Y-T9q" customClass="UpcomingMovieTrailerController" customModule="The_10___Spencer_Cawley" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LAj-gg-W7X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Ljp-Os-Egk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dJa-75-xmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2873" y="324"/>
         </scene>
         <!--(Title)-->
         <scene sceneID="1mS-FW-yRb">
@@ -491,7 +460,6 @@
                         <outlet property="playingMovieDetailRating" destination="xgG-rA-S46" id="XMr-rH-VBb"/>
                         <outlet property="playingMovieID" destination="NCZ-hZ-GlM" id="DYB-2h-z2p"/>
                         <outlet property="ticketButton" destination="u0D-di-zxY" id="4eT-3H-GWR"/>
-                        <segue destination="wf3-A5-EXh" kind="show" identifier="toPlayingTrailerVC" id="qVl-ti-62a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0x-5a-b4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
