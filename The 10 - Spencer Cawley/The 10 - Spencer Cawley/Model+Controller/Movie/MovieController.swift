@@ -8,6 +8,8 @@
 
 import UIKit
 
+var imageCache = [String: UIImage]()
+
 class MovieController {
     
     var movies = [Movie]()
@@ -30,10 +32,10 @@ class MovieController {
                     let jsonDecoder = JSONDecoder()
                     let decodedData = try jsonDecoder.decode(JSONDictionary.self, from: data)
                     let movies = decodedData.results.compactMap( { $0})
-                    
-                    self.movies = movies
-                    completion(movies)
-                    print(movies.count)
+                    let moviesArray = Array(movies.prefix(10))
+                    self.movies = moviesArray
+                    completion(moviesArray)
+                    print(moviesArray.count)
                     
                 } catch {
                     print("Error!: \(error.localizedDescription)")
@@ -90,11 +92,17 @@ class MovieController {
     func fetchMovieImage(movie: Movie, completion: @escaping(UIImage?) -> Void) {
         guard let posterPath = movie.posterPath else { completion(nil); return }
         
+        if let cachedImage = imageCache[posterPath] {
+            completion(cachedImage)
+            return
+        }
+        
         let url = URL(string: "https://image.tmdb.org/t/p/w500")!.appendingPathComponent(posterPath)
         
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let data = data {
                 let image = UIImage(data: data)
+                imageCache[url.absoluteString] = image
                 completion(image)
             }
             if let error = error {

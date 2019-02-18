@@ -464,7 +464,7 @@
                                     <constraint firstAttribute="width" constant="56" id="FNk-c8-rVt"/>
                                     <constraint firstAttribute="height" constant="56" id="fk6-8s-Oet"/>
                                 </constraints>
-                                <state key="normal" image="ticket"/>
+                                <state key="normal" image="RealTicket"/>
                                 <connections>
                                     <action selector="getTicketsButton:" destination="4jd-Uy-k5T" eventType="touchUpInside" id="yhI-Fc-JNh"/>
                                 </connections>
@@ -544,7 +544,7 @@
         <image name="REALnowPlayingSelected" width="50" height="50"/>
         <image name="REALupcoming" width="50" height="50"/>
         <image name="REALupcomingSelected" width="50" height="50"/>
+        <image name="RealTicket" width="45" height="45"/>
         <image name="popcorn" width="40" height="40"/>
-        <image name="ticket" width="45" height="45"/>
     </resources>
 </document>
