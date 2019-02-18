@@ -8,11 +8,13 @@
 
 import Foundation
 
-struct JSONDictionary: Decodable {
+// First API Layer
+struct JSONDictionary: Codable {
     let results: [Movie]
 }
 
-struct Movie: Decodable {
+// Second API Layer
+struct Movie: Codable {
     let voteAverage: Double
     let title: String
     let posterPath: String?

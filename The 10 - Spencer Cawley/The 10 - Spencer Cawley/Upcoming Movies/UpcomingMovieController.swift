@@ -10,6 +10,7 @@ import UIKit
 
 class UpcomingMovieController: UITableViewController {
     
+    // Properties
     let movieController = MovieController()
 
     override func viewDidLoad() {
@@ -18,6 +19,7 @@ class UpcomingMovieController: UITableViewController {
         customBackButton()
     }
     
+    // Fetch Upcoming Movies
     func fetchUpcomingMovies() {
         movieController.fetchUpcomingMovie { (movies) in
             guard movies != nil else { return }
@@ -27,6 +29,7 @@ class UpcomingMovieController: UITableViewController {
         }
     }
 
+    // Eliminate Text on Back Button on NavBar
     func customBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
@@ -45,6 +48,7 @@ class UpcomingMovieController: UITableViewController {
         let movie = movieController.movies[indexPath.row]
         cell.movie = movie
         
+        // Fetch/Set images for each movie
         movieController.fetchMovieImage(movie: movie) { (image) in
             guard let image = image else { return }
             DispatchQueue.main.async {

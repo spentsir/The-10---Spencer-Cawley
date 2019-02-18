@@ -10,17 +10,14 @@ import UIKit
 
 class UpcomingMovieCell: UITableViewCell {
     
+    // Properties
     var movie: Movie? {
         didSet {
             updateViews()
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        updateImageView()
-    }
-    
+    // IBOutlets
     @IBOutlet weak var upcomingMovieImage: UIImageView!
     @IBOutlet weak var upcomingMovieTitle: UILabel!
     @IBOutlet weak var upcomingMovieRating: UILabel!
@@ -33,16 +30,14 @@ class UpcomingMovieCell: UITableViewCell {
         upcomingMovieRating.text = "\(movie.voteAverage)"
         upcomingMovieOverview.text = movie.overview
         upcomingMovieRating.isHidden = true
+        setImageViewShadow()
     }
     
-    func updateImageView() {
-        upcomingMovieImage.layer.cornerRadius = 20
-        
+    // Set ImageView Drop Shadow
+    func setImageViewShadow() {
         upcomingMovieImage.layer.shadowColor = UIColor.black.cgColor
         upcomingMovieImage.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
         upcomingMovieImage.layer.shadowRadius = 8
         upcomingMovieImage.layer.shadowOpacity = 0.5
-        upcomingMovieImage.clipsToBounds  = true
-        upcomingMovieImage.layer.masksToBounds = false
     }
 }

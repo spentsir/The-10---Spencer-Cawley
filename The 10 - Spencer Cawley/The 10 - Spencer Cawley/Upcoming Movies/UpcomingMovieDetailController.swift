@@ -11,7 +11,8 @@ import SafariServices
 
 class UpcomingMovieDetailController: UIViewController {
     
-    var movie           : Movie?
+    // Properties
+    var movie: Movie?
     var movieController = MovieController()
     
     override func viewDidLoad() {
@@ -20,21 +21,22 @@ class UpcomingMovieDetailController: UIViewController {
         
     }
     
+    // IBOutlets
     @IBOutlet weak var upcomingMovieDetailImage: UIImageView!
     @IBOutlet weak var upcomingMovieDetailRating: UILabel!
     @IBOutlet weak var upcomingMovieDetailOverview: UILabel!
     @IBOutlet weak var outOf10: UILabel!
-    
-    
     @IBOutlet weak var upcomingMovieID: UILabel!
     @IBOutlet weak var watchTrailerButton: UIButton!
     
+    // Button to show Trailers
     @IBAction func watchTrailerButton(_ sender: UIButton) {
         guard let movie = movie else { return }
         let movieID = String(movie.id)
         fetchVideo(for: movieID)
     }
     
+    // Button to show Fandango
     func showSafariVC(url: String) {
         guard let url = URL(string: url) else { return }
         let safariVC = SFSafariViewController(url: url)
@@ -44,40 +46,37 @@ class UpcomingMovieDetailController: UIViewController {
     func updateViews() {
         guard let movie = movie else { return }
         navigationItem.title = movie.title
-//        upcomingMovieDetailRating.text = "\(movie.voteAverage)"
         upcomingMovieDetailOverview.text = movie.overview
         upcomingMovieID.text = "\(movie.id)"
         
+        // If movie rating is 0 from API, set it to TBD
         if upcomingMovieDetailRating.text == "\(0.0)" {
             upcomingMovieDetailRating.text = "TBD"
             outOf10.isHidden = true
         } else {
             upcomingMovieDetailRating.text = "\(movie.voteAverage)"
         }
-        print(movie.id)
         
-        
+        // Fetch/Set image for movie
         movieController.fetchMovieImage(movie: movie) { (image) in
             guard let image = image else { return }
             DispatchQueue.main.async {
                 self.upcomingMovieDetailImage.image = image
             }
         }
-        updateImageView()
+        setImageViewShadow()
         updateTrailerButton()
     }
     
-    func updateImageView() {
-        upcomingMovieDetailImage.layer.cornerRadius = 20
-        
+    // Set ImageView DropShadow
+    func setImageViewShadow() {
         upcomingMovieDetailImage.layer.shadowColor = UIColor.black.cgColor
         upcomingMovieDetailImage.layer.shadowOffset = CGSize(width: 0.0, height: 9.0)
         upcomingMovieDetailImage.layer.shadowRadius = 5
         upcomingMovieDetailImage.layer.shadowOpacity = 0.5
-        upcomingMovieDetailImage.clipsToBounds = true
-        upcomingMovieDetailImage.layer.masksToBounds = false
     }
     
+    // Make Trailer Button Round/DropShadow
     func updateTrailerButton() {
         watchTrailerButton.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         watchTrailerButton.layer.cornerRadius = watchTrailerButton.frame.height / 2
@@ -90,6 +89,7 @@ class UpcomingMovieDetailController: UIViewController {
     }
 }
 
+// Extension for playing Trailers
 extension UpcomingMovieDetailController {
     
     func playMovie(with key: String) {
@@ -107,11 +107,21 @@ extension UpcomingMovieDetailController {
             }
             
             guard let data = data else {return}
-            let movie = try? JSONDecoder().decode(Trailer.self, from: data)
+            let trailer = try? JSONDecoder().decode(Trailer.self, from: data)
             DispatchQueue.main.async {
-                self.playMovie(with: movie!.results!.first!.key!)
-                print(movie!.results!.first!.key!)
+                self.playTrailer(trailer)
             }
             }.resume()
+    }
+    
+    // Function to make sure trailers are pulled and not feature videos.
+    // As well as pulling the highest video quality
+    func playTrailer(_ trailer: Trailer?) {
+        guard let trailer = trailer, let results = trailer.results else { return }
+        let trailerResults = results
+            .filter({$0.type == TrailerType.Trailer.rawValue})
+            .sorted(by: { $0.size! > $1.size! })
+        
+        playMovie(with: trailerResults.first!.key!)
     }
 }

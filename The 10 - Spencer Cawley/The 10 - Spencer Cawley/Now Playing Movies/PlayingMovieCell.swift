@@ -17,11 +17,6 @@ class PlayingMovieCell: UITableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        updateImageView()
-    }
-    
     // IBOutlets
     @IBOutlet weak var playingMovieImage: UIImageView!
     @IBOutlet weak var playingMovieTitle: UILabel!
@@ -38,11 +33,11 @@ class PlayingMovieCell: UITableViewCell {
         playingMovieID.text = "\(movie.id)"
         playingMovieOverview.text = movie.overview
         playingMovieRating.isHidden = true
+        setImageViewShadow()
     }
     
-    func updateImageView() {
-        playingMovieImage.layer.cornerRadius = playingMovieImage.frame.height / 5
-        
+    // ImageView Drop Shadow
+    func setImageViewShadow() {
         playingMovieImage.layer.shadowColor = UIColor.black.cgColor
         playingMovieImage.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
         playingMovieImage.layer.shadowRadius = 8

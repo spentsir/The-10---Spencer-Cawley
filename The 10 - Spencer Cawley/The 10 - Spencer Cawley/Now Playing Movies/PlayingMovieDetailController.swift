@@ -9,13 +9,9 @@
 import UIKit
 import SafariServices
 
-enum TrailerType: String {
-    case Trailer
-    case Featurette
-}
-
 class PlayingMovieDetailController: UIViewController {
     
+    // Properties
     var movie: Movie?
     var movieController = MovieController()
 
@@ -24,6 +20,7 @@ class PlayingMovieDetailController: UIViewController {
         updateViews()
     }
     
+    // IBOutlets
     @IBOutlet weak var playingMovieDetailImage: UIImageView!
     @IBOutlet weak var playingMovieDetailRating: UILabel!
     @IBOutlet weak var playingMovieDetailOverview: UILabel!
@@ -31,13 +28,14 @@ class PlayingMovieDetailController: UIViewController {
     @IBOutlet weak var playTrailerButton: UIButton!
     @IBOutlet weak var ticketButton: UIButton!
     
-    
+    // Button to show Trailers
     @IBAction func playTrailerButton(_ sender: UIButton) {
         guard let movie = movie else { return }
         let movieID = String(movie.id)
         fetchVideo(for: movieID)
     }
     
+    // Button to show Fandango
     @IBAction func getTicketsButton(_ sender: UIButton) {
         guard let movie = movie else { return }
         let title = movie.title
@@ -45,12 +43,12 @@ class PlayingMovieDetailController: UIViewController {
         showSafariVC(url: "https://www.fandango.com/search/?q=\(movieTitle)")
     }
     
+    // Show Safari Page inside App
     func showSafariVC(url: String) {
         guard let url = URL(string: url) else { return }
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true)
     }
-    
     
     
     func updateViews() {
@@ -60,8 +58,6 @@ class PlayingMovieDetailController: UIViewController {
         playingMovieDetailOverview.text = movie.overview
         playingMovieID.text = "\(movie.id)"
         playingMovieID.isHidden = true
-        print(movie.id)
-        print(movie.title)
         
         movieController.fetchMovieImage(movie: movie) { (image) in
             guard let image = image else { return }
@@ -69,22 +65,20 @@ class PlayingMovieDetailController: UIViewController {
                 self.playingMovieDetailImage.image = image
             }
         }
-        updateImageView()
+        setImageViewShadow()
         updateTrailerButton()
         updateTicketButton()
     }
     
-    func updateImageView() {
-        playingMovieDetailImage.layer.cornerRadius    = 20
-        
+    // Drop Shadow for ImageView
+    func setImageViewShadow() {
         playingMovieDetailImage.layer.shadowColor     = UIColor.black.cgColor
         playingMovieDetailImage.layer.shadowOffset    = CGSize(width: 0.0, height: 9.0)
         playingMovieDetailImage.layer.shadowRadius    = 5
         playingMovieDetailImage.layer.shadowOpacity   = 0.5
-        playingMovieDetailImage.clipsToBounds         = true
-        playingMovieDetailImage.layer.masksToBounds   = false
     }
     
+    // Make Trailer Button Round/Drop Shadow
     func updateTrailerButton() {
         playTrailerButton.setTitleColor(Colors.veryDarkGrey, for: .normal)
         playTrailerButton.setTitleColor(Colors.red, for: .highlighted)
@@ -97,6 +91,7 @@ class PlayingMovieDetailController: UIViewController {
         playTrailerButton.layer.shadowRadius          = 8
     }
     
+    // Make Ticket Button Round/Drop Shadow
     func updateTicketButton() {
         ticketButton.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         ticketButton.layer.cornerRadius = ticketButton.frame.height / 2
@@ -108,12 +103,15 @@ class PlayingMovieDetailController: UIViewController {
     }
 }
 
+// Extension for playing Trailers
 extension PlayingMovieDetailController {
 
+    // Function to grab embeded youtube video
     func playMovie(with key: String) {
         showSafariVC(url: "https://www.youtube.com/embed/\(key)")
     }
 
+    // Fetch Video Function
     func fetchVideo(for movieId: String) {
         let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieId)/videos?api_key=725427eb27bb2372e7c69e11e5256f55&language=en-US")!
 
@@ -131,8 +129,9 @@ extension PlayingMovieDetailController {
             }.resume()
     }
     
+    // Function to make sure trailers are pulled and not feature videos.
+    // Also making sure the highest video quality is pulled
     func playTrailer(_ trailer: Trailer?) {
-        
         guard let trailer = trailer, let results = trailer.results else { return }
         let trailerResults = results
             .filter({$0.type == TrailerType.Trailer.rawValue})

@@ -8,32 +8,24 @@
 
 import Foundation
 
-class Trailer: Codable {
-    
-    var id: Int?
-    var results: [TrailerData]?
-    
-    init(id: Int?, results: [TrailerData]?) {
-        self.id = id
-        self.results = results
-    }
+// Trailer Keys for videos to make sure trailer is shown, not a featurette
+enum TrailerType: String {
+    case Trailer
+    case Featurette
 }
 
-class TrailerData: Codable {
-    
+// First API Layer
+struct Trailer: Codable {
+    var id: Int?
+    var results: [TrailerData]?
+}
+
+// Second API Layer
+struct TrailerData: Codable {
     var id: String?
     var key: String?
     var name: String?
     var site: String?
     var size: Int?
     var type: String?
-    
-    init(id: String?, key: String?, name: String?, site: String?, size: Int?, type: String?) {
-        self.id = id
-        self.key = key
-        self.name = name
-        self.site = site
-        self.size = size
-        self.type = type
-    }
 }

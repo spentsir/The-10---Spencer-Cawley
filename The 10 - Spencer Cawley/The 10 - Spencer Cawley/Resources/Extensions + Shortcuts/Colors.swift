@@ -8,8 +8,8 @@
 
 import UIKit
 
+// Might have borrowed this from a person
 struct Colors {
-    
     static let brightOrange = UIColor(red: 255.0/255.0, green: 69.0/255.0, blue: 0.0/255.0, alpha: 1.0)
     static let red = UIColor(red: 255.0/255.0, green: 115.0/255.0, blue: 115.0/255.0, alpha: 1.0)
     static let orange = UIColor(red: 255.0/255.0, green: 175.0/255.0, blue: 72.0/255.0, alpha: 1.0)
