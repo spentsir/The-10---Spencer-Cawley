@@ -18,7 +18,6 @@ class UpcomingMovieDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        
     }
     
     // IBOutlets
@@ -29,14 +28,14 @@ class UpcomingMovieDetailController: UIViewController {
     @IBOutlet weak var upcomingMovieID: UILabel!
     @IBOutlet weak var watchTrailerButton: UIButton!
     
-    // Button to show Trailers
+    // Button to show Trailer on youtube
     @IBAction func watchTrailerButton(_ sender: UIButton) {
         guard let movie = movie else { return }
         let movieID = String(movie.id)
         fetchVideo(for: movieID)
     }
     
-    // Button to show Fandango
+    // Button to show Fandango website
     func showSafariVC(url: String) {
         guard let url = URL(string: url) else { return }
         let safariVC = SFSafariViewController(url: url)
@@ -49,7 +48,7 @@ class UpcomingMovieDetailController: UIViewController {
         upcomingMovieDetailOverview.text = movie.overview
         upcomingMovieID.text = "\(movie.id)"
         
-        // If movie rating is 0 from API, set it to TBD
+        // If movie rating is 0.0 from API, set it to TBD
         if upcomingMovieDetailRating.text == "\(0.0)" {
             upcomingMovieDetailRating.text = "TBD"
             outOf10.isHidden = true
@@ -78,9 +77,10 @@ class UpcomingMovieDetailController: UIViewController {
     
     // Make Trailer Button Round/DropShadow
     func updateTrailerButton() {
+        watchTrailerButton.setTitleColor(Colors.veryDarkGrey, for: .normal)
+        watchTrailerButton.setTitleColor(Colors.white, for: .highlighted)
         watchTrailerButton.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         watchTrailerButton.layer.cornerRadius = watchTrailerButton.frame.height / 2
-        watchTrailerButton.setTitleColor(Colors.veryDarkGrey, for: .normal)
         
         watchTrailerButton.layer.shadowColor = UIColor.black.cgColor
         watchTrailerButton.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)

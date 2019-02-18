@@ -28,14 +28,14 @@ class PlayingMovieDetailController: UIViewController {
     @IBOutlet weak var playTrailerButton: UIButton!
     @IBOutlet weak var ticketButton: UIButton!
     
-    // Button to show Trailers
+    // Button to show Trailer on YouTube
     @IBAction func playTrailerButton(_ sender: UIButton) {
         guard let movie = movie else { return }
         let movieID = String(movie.id)
         fetchVideo(for: movieID)
     }
     
-    // Button to show Fandango
+    // Button to show Fandango website
     @IBAction func getTicketsButton(_ sender: UIButton) {
         guard let movie = movie else { return }
         let title = movie.title
@@ -59,6 +59,7 @@ class PlayingMovieDetailController: UIViewController {
         playingMovieID.text = "\(movie.id)"
         playingMovieID.isHidden = true
         
+        // Fetch/Set image for movie
         movieController.fetchMovieImage(movie: movie) { (image) in
             guard let image = image else { return }
             DispatchQueue.main.async {
@@ -81,7 +82,7 @@ class PlayingMovieDetailController: UIViewController {
     // Make Trailer Button Round/Drop Shadow
     func updateTrailerButton() {
         playTrailerButton.setTitleColor(Colors.veryDarkGrey, for: .normal)
-        playTrailerButton.setTitleColor(Colors.red, for: .highlighted)
+        playTrailerButton.setTitleColor(Colors.white, for: .highlighted)
         playTrailerButton.backgroundColor             = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         playTrailerButton.layer.cornerRadius          = playTrailerButton.frame.height / 2
         
