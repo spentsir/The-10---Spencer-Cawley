@@ -10,7 +10,6 @@
 		BF6D08C62216214D00C489B1 /* PlayingMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08C52216214D00C489B1 /* PlayingMovieCell.swift */; };
 		BF6D08C92216218500C489B1 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08C82216218500C489B1 /* Movie.swift */; };
 		BF6D08CB2216218D00C489B1 /* MovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08CA2216218C00C489B1 /* MovieController.swift */; };
-		BF6D08CE221621A900C489B1 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08CD221621A900C489B1 /* URL.swift */; };
 		BF6D08D1221621CD00C489B1 /* PlayingMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08D0221621CD00C489B1 /* PlayingMovieController.swift */; };
 		BF6D08D3221621D200C489B1 /* PlayingMovieDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08D2221621D200C489B1 /* PlayingMovieDetailController.swift */; };
 		BF6D08D52217653F00C489B1 /* UpcomingMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08D42217653F00C489B1 /* UpcomingMovieCell.swift */; };
@@ -28,7 +27,6 @@
 		BF6D08C52216214D00C489B1 /* PlayingMovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingMovieCell.swift; sourceTree = "<group>"; };
 		BF6D08C82216218500C489B1 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		BF6D08CA2216218C00C489B1 /* MovieController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieController.swift; sourceTree = "<group>"; };
-		BF6D08CD221621A900C489B1 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		BF6D08D0221621CD00C489B1 /* PlayingMovieController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingMovieController.swift; sourceTree = "<group>"; };
 		BF6D08D2221621D200C489B1 /* PlayingMovieDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingMovieDetailController.swift; sourceTree = "<group>"; };
 		BF6D08D42217653F00C489B1 /* UpcomingMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieCell.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 		BF6D08CF221621B700C489B1 /* Extensions + Shortcuts */ = {
 			isa = PBXGroup;
 			children = (
-				BF6D08CD221621A900C489B1 /* URL.swift */,
 				BF6D08E52217E5BB00C489B1 /* Colors.swift */,
 			);
 			path = "Extensions + Shortcuts";
@@ -229,7 +226,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF6D08CE221621A900C489B1 /* URL.swift in Sources */,
 				BF6D08CB2216218D00C489B1 /* MovieController.swift in Sources */,
 				BF6D08E62217E5BB00C489B1 /* Colors.swift in Sources */,
 				BF6D08D82217658200C489B1 /* UpcomingMovieController.swift in Sources */,

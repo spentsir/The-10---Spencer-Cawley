@@ -13,17 +13,11 @@ var imageCache = [String: UIImage]()
 class MovieController {
     
     var movies = [Movie]()
-    let playingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
-//    let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming")!
+    let playingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=725427eb27bb2372e7c69e11e5256f55")
     let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=725427eb27bb2372e7c69e11e5256f55&language=en-US&page=2")
     
     func fetchPlayingMovie(completion: @escaping([Movie]?) -> Void) {
-        
-        let queries = [
-            "api_key" : "725427eb27bb2372e7c69e11e5256f55",
-        ]
-        
-        let url = playingBaseURL.withQueries(queries)!
+        let url = playingBaseURL!
         print(url)
     
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -32,7 +26,7 @@ class MovieController {
                     let jsonDecoder = JSONDecoder()
                     let decodedData = try jsonDecoder.decode(JSONDictionary.self, from: data)
                     let movies = decodedData.results.compactMap( { $0})
-                    let moviesArray = Array(movies.prefix(10))
+                    let moviesArray = Array(movies.prefix(through: 9))
                     self.movies = moviesArray
                     completion(moviesArray)
                     print(moviesArray.count)
@@ -53,13 +47,6 @@ class MovieController {
     }
     
     func fetchUpcomingMovie(completion: @escaping([Movie]?) -> Void) {
-        
-        let queries = [
-            "total_results" : "10",
-            "api_key" : "725427eb27bb2372e7c69e11e5256f55"
-        ]
-        
-//        let url = upcomingBaseURL.withQueries(queries)!
         let url = upcomingBaseURL!
         print(url)
         
@@ -69,10 +56,10 @@ class MovieController {
                     let jsonDecoder = JSONDecoder()
                     let decodedData = try jsonDecoder.decode(JSONDictionary.self, from: data)
                     let movies = decodedData.results.compactMap( { $0})
-                    
-                    self.movies = movies
-                    completion(movies)
-                    print(movies.count)
+                    let moviesArray = Array(movies.prefix(through: 9))
+                    self.movies = moviesArray
+                    completion(moviesArray)
+                    print(moviesArray.count)
                     
                 } catch {
                     print("Error!: \(error.localizedDescription)")
