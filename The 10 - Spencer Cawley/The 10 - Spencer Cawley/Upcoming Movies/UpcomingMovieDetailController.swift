@@ -35,7 +35,7 @@ class UpcomingMovieDetailController: UIViewController {
         fetchVideo(for: movieID)
     }
     
-    // Button to show Fandango website
+    // Show Safari Page inside App
     func showSafariVC(url: String) {
         guard let url = URL(string: url) else { return }
         let safariVC = SFSafariViewController(url: url)

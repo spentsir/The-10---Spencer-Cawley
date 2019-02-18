@@ -23,7 +23,7 @@ class UpcomingMovieCell: UITableViewCell {
     @IBOutlet weak var upcomingMovieRating: UILabel!
     @IBOutlet weak var upcomingMovieOverview: UILabel!
     
-    
+    // UpdateViews Function
     func updateViews() {
         guard let movie = movie else { return }
         upcomingMovieTitle.text = movie.title

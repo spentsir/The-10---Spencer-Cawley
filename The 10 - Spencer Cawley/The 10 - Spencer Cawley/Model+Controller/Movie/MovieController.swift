@@ -17,12 +17,12 @@ class MovieController {
     var movies = [Movie]()
     
     // Base URL Strings
-    let playingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=725427eb27bb2372e7c69e11e5256f55")
-    let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=725427eb27bb2372e7c69e11e5256f55&language=en-US&page=2")
+    let playingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=725427eb27bb2372e7c69e11e5256f55")!
+    let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=725427eb27bb2372e7c69e11e5256f55&language=en-US&page=2")!
     
     // Fetch Current Movies Playing
     func fetchPlayingMovie(completion: @escaping([Movie]?) -> Void) {
-        let url = playingBaseURL!
+        let url = playingBaseURL
     
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let data = data {
@@ -31,7 +31,7 @@ class MovieController {
                     let decodedData = try jsonDecoder.decode(JSONDictionary.self, from: data)
                     let movies = decodedData.results.compactMap( { $0})
                     
-                    // Throw movies into moviesArray to pull a specific number of movies (10 movies)
+                    // Put movies into moviesArray to pull a specific number of movies (10 movies)
                     let moviesArray = Array(movies.prefix(through: 9))
                     self.movies = moviesArray
                     completion(moviesArray)
@@ -53,7 +53,7 @@ class MovieController {
     
     // Fetch Upcoming Movies
     func fetchUpcomingMovie(completion: @escaping([Movie]?) -> Void) {
-        let url = upcomingBaseURL!
+        let url = upcomingBaseURL
         
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let data = data {
