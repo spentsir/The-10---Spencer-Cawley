@@ -9,6 +9,11 @@
 import UIKit
 import SafariServices
 
+enum TrailerType: String {
+    case Trailer
+    case Featurette
+}
+
 class PlayingMovieDetailController: UIViewController {
     
     var movie: Movie?
@@ -119,12 +124,21 @@ extension PlayingMovieDetailController {
             }
 
             guard let data = data else {return}
-            let movie = try? JSONDecoder().decode(Trailer.self, from: data)
+            let trailer = try? JSONDecoder().decode(Trailer.self, from: data)
             DispatchQueue.main.async {
-                self.playMovie(with: movie!.results!.first!.key!)
-                print(movie!.results!.first!.key!)
+                self.playTrailer(trailer)
             }
             }.resume()
+    }
+    
+    func playTrailer(_ trailer: Trailer?) {
+        
+        guard let trailer = trailer, let results = trailer.results else { return }
+        let trailerResults = results
+            .filter({$0.type == TrailerType.Trailer.rawValue})
+            .sorted(by: { $0.size! > $1.size! })
+        
+        playMovie(with: trailerResults.first!.key!)
     }
 }
 

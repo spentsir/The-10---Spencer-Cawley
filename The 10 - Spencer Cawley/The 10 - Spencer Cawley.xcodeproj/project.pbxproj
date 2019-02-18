@@ -17,9 +17,9 @@
 		BF6D08DA2217659900C489B1 /* UpcomingMovieDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08D92217659900C489B1 /* UpcomingMovieDetailController.swift */; };
 		BF6D08E62217E5BB00C489B1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08E52217E5BB00C489B1 /* Colors.swift */; };
 		BF6D08E82217FBF200C489B1 /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D08E72217FBF200C489B1 /* Trailer.swift */; };
+		BF8DE10C221A68AD009943C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF8DE10B221A68AD009943C6 /* Assets.xcassets */; };
 		BFA50FA422160E6700ADE42E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA50FA322160E6700ADE42E /* AppDelegate.swift */; };
 		BFA50FA922160E6700ADE42E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA50FA722160E6700ADE42E /* Main.storyboard */; };
-		BFA50FAB22160E6800ADE42E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA50FAA22160E6800ADE42E /* Assets.xcassets */; };
 		BFA50FAE22160E6800ADE42E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA50FAC22160E6800ADE42E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -34,10 +34,10 @@
 		BF6D08D92217659900C489B1 /* UpcomingMovieDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieDetailController.swift; sourceTree = "<group>"; };
 		BF6D08E52217E5BB00C489B1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BF6D08E72217FBF200C489B1 /* Trailer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailer.swift; sourceTree = "<group>"; };
+		BF8DE10B221A68AD009943C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFA50FA022160E6700ADE42E /* The 10 - Spencer Cawley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The 10 - Spencer Cawley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA50FA322160E6700ADE42E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFA50FA822160E6700ADE42E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BFA50FAA22160E6800ADE42E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFA50FAD22160E6800ADE42E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFA50FAF22160E6800ADE42E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,7 +140,7 @@
 				BF6D08CF221621B700C489B1 /* Extensions + Shortcuts */,
 				BFA50FB622160E7E00ADE42E /* Storyboards */,
 				BFA50FA322160E6700ADE42E /* AppDelegate.swift */,
-				BFA50FAA22160E6800ADE42E /* Assets.xcassets */,
+				BF8DE10B221A68AD009943C6 /* Assets.xcassets */,
 				BFA50FAF22160E6800ADE42E /* Info.plist */,
 			);
 			path = Resources;
@@ -214,7 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFA50FAE22160E6800ADE42E /* LaunchScreen.storyboard in Resources */,
-				BFA50FAB22160E6800ADE42E /* Assets.xcassets in Resources */,
+				BF8DE10C221A68AD009943C6 /* Assets.xcassets in Resources */,
 				BFA50FA922160E6700ADE42E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
