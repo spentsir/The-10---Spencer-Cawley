@@ -12,11 +12,12 @@ class PlayingMovieController: UITableViewController {
     
     //Properties
     let movieController = MovieController()
+    let cellID = "playingMovieCell"
+    let segueID = "toPlayingDetailVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchPlayingMovies()
-        setCustomBackButton()
     }
     
     // Fetch Currently Playing Movies
@@ -29,11 +30,6 @@ class PlayingMovieController: UITableViewController {
         }
     }
     
-    // Eliminate text from back button on NavBar
-    func setCustomBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
@@ -44,7 +40,7 @@ class PlayingMovieController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell  = tableView.dequeueReusableCell(withIdentifier: "playingMovieCell", for: indexPath) as? PlayingMovieCell else { return UITableViewCell() }
+        guard let cell  = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? PlayingMovieCell else { return UITableViewCell() }
         let movie = movieController.movies[indexPath.row]
         cell.movie = movie
         
@@ -60,7 +56,7 @@ class PlayingMovieController: UITableViewController {
     
      //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toPlayingDetailVC" {
+        if segue.identifier == segueID {
             guard let destinationVC = segue.destination as? MovieDetailController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             destinationVC.movie = movieController.movies[indexPath.row]

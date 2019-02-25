@@ -10,13 +10,6 @@ import UIKit
 
 class PlayingMovieCell: UITableViewCell {
 
-    // properties
-    var movie: Movie? {
-        didSet {
-            updateViews()
-        }
-    }
-    
     // IBOutlets
     @IBOutlet weak var playingMovieImage: UIImageView!
     @IBOutlet weak var playingMovieTitle: UILabel!
@@ -24,6 +17,12 @@ class PlayingMovieCell: UITableViewCell {
     @IBOutlet weak var playingMovieRating: UILabel!
     @IBOutlet weak var playingMovieID: UILabel!
     
+    // properties
+    var movie: Movie? {
+        didSet {
+            updateViews()
+        }
+    }
     
     // Updateviews Function
     func updateViews() {

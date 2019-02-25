@@ -12,11 +12,12 @@ class UpcomingMovieController: UITableViewController {
     
     // Properties
     let movieController = MovieController()
+    let cellID = "upcomingMovieCell"
+    let segueID = "toUpcomingDetailVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUpcomingMovies()
-//        customBackButton()
     }
     
     // Fetch Upcoming Movies
@@ -28,11 +29,6 @@ class UpcomingMovieController: UITableViewController {
             }
         }
     }
-
-    // Eliminate Text on Back Button on NavBar
-//    func customBackButton() {
-//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//    }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -44,7 +40,7 @@ class UpcomingMovieController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "upcomingMovieCell", for: indexPath) as? UpcomingMovieCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? UpcomingMovieCell else { return UITableViewCell() }
         let movie = movieController.movies[indexPath.row]
         cell.movie = movie
         
@@ -60,7 +56,7 @@ class UpcomingMovieController: UITableViewController {
 
      //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toUpcomingDetailVC" {
+        if segue.identifier == segueID {
             guard let destinationVC = segue.destination as? MovieDetailController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             destinationVC.movie = movieController.movies[indexPath.row]

@@ -8,12 +8,10 @@
 
 import UIKit
 
+class MovieController {
+
 // Container for Cached Images
 var imageCache = [String: UIImage]()
-
-class MovieController {
-    
-//var imageCache = [String: UIImage]()
     
     // Properties
     var movies = [Movie]()
@@ -84,7 +82,6 @@ class MovieController {
         dataTask.resume()
     }
     
-    
     // Fetch Movie Poster Images
     func fetchMovieImage(movie: Movie, completion: @escaping(UIImage?) -> Void) {
         guard let posterPath = movie.posterPath else { completion(nil); return }
@@ -102,7 +99,7 @@ class MovieController {
                 let image = UIImage(data: data)
                 
                 // save image to cache container
-                imageCache[url.absoluteString] = image
+                self.imageCache[url.absoluteString] = image
                 completion(image)
             }
             if let error = error {

@@ -11,26 +11,24 @@ import SafariServices
 
 class MovieDetailController: UIViewController {
     
-    // Properties
-    var movie: Movie?
-    var movieController = MovieController()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateViews()
-    }
-    
     // IBOutlets
     @IBOutlet weak var playingMovieDetailImage: UIImageView!
     @IBOutlet weak var playingMovieDetailRating: UILabel!
     @IBOutlet weak var outOf10: UILabel!
-    
     @IBOutlet weak var playingMovieDetailOverview: UILabel!
     @IBOutlet weak var playingMovieID: UILabel!
     @IBOutlet weak var playTrailerButton: UIButton!
     @IBOutlet weak var ticketButton: UIButton!
     
+    // Properties
+    var movie: Movie?
+    var movieController = MovieController()
     var hideTicketButton: Bool?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+    }
     
     // Button to show Trailer on YouTube
     @IBAction func playTrailerButton(_ sender: UIButton) {
@@ -70,7 +68,6 @@ class MovieDetailController: UIViewController {
         if hideTicketButton == true {
             ticketButton.isHidden = true
         }
-        
         
         // Fetch/Set image for movie
         movieController.fetchMovieImage(movie: movie) { [weak self] (image) in

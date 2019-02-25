@@ -10,18 +10,18 @@ import UIKit
 
 class UpcomingMovieCell: UITableViewCell {
     
+    // IBOutlets
+    @IBOutlet weak var upcomingMovieImage: UIImageView!
+    @IBOutlet weak var upcomingMovieTitle: UILabel!
+    @IBOutlet weak var upcomingMovieRating: UILabel!
+    @IBOutlet weak var upcomingMovieOverview: UILabel!
+    
     // Properties
     var movie: Movie? {
         didSet {
             updateViews()
         }
     }
-    
-    // IBOutlets
-    @IBOutlet weak var upcomingMovieImage: UIImageView!
-    @IBOutlet weak var upcomingMovieTitle: UILabel!
-    @IBOutlet weak var upcomingMovieRating: UILabel!
-    @IBOutlet weak var upcomingMovieOverview: UILabel!
     
     // UpdateViews Function
     func updateViews() {
