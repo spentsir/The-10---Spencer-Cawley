@@ -33,14 +33,8 @@ class PlayingMovieCell: UITableViewCell {
         playingMovieID.text = "\(movie.id)"
         playingMovieOverview.text = movie.overview
         playingMovieRating.isHidden = true
-        setImageViewShadow()
-    }
-    
-    // ImageView Drop Shadow
-    func setImageViewShadow() {
-        playingMovieImage.layer.shadowColor = UIColor.black.cgColor
-        playingMovieImage.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        playingMovieImage.layer.shadowRadius = 8
-        playingMovieImage.layer.shadowOpacity = 0.5
+        
+        // apply shadow to image
+        playingMovieImage.applyShadow()
     }
 }

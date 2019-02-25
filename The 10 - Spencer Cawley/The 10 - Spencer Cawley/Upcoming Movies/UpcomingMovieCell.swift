@@ -30,14 +30,8 @@ class UpcomingMovieCell: UITableViewCell {
         upcomingMovieRating.text = "\(movie.voteAverage)"
         upcomingMovieOverview.text = movie.overview
         upcomingMovieRating.isHidden = true
-        setImageViewShadow()
-    }
-    
-    // Set ImageView Drop Shadow
-    func setImageViewShadow() {
-        upcomingMovieImage.layer.shadowColor = UIColor.black.cgColor
-        upcomingMovieImage.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        upcomingMovieImage.layer.shadowRadius = 8
-        upcomingMovieImage.layer.shadowOpacity = 0.5
+        
+        // apply shadow to image
+        upcomingMovieImage.applyShadow()
     }
 }

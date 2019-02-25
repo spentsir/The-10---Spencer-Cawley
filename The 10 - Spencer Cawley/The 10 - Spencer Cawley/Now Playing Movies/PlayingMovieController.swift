@@ -58,10 +58,10 @@ class PlayingMovieController: UITableViewController {
         return cell
     }
     
-    // MARK: - Navigation
+     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toPlayingMovieDetailVC" {
-            guard let destinationVC = segue.destination as? PlayingMovieDetailController,
+        if segue.identifier == "toPlayingDetailVC" {
+            guard let destinationVC = segue.destination as? MovieDetailController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             destinationVC.movie = movieController.movies[indexPath.row]
         }

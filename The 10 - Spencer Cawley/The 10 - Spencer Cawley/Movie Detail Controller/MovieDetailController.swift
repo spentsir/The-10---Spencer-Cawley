@@ -36,10 +36,10 @@ class MovieDetailController: UIViewController {
     @IBAction func playTrailerButton(_ sender: UIButton) {
         guard let movie = movie else { return }
         let movieID = String(movie.id)
-        TrailerController.fetchVideo(for: movieID) { (key) in
+        TrailerController.fetchVideo(for: movieID) { [weak self] (key) in
             if let key = key {
                 DispatchQueue.main.async {
-                         self.playMovie(with: key)
+                         self?.playMovie(with: key)
                 }
             }
         }
@@ -79,42 +79,9 @@ class MovieDetailController: UIViewController {
                 self?.playingMovieDetailImage.image = image
             }
         }
-        setImageViewShadow()
-        updateTrailerButton()
-        updateTicketButton()
-    }
-    
-    // Drop Shadow for ImageView
-    func setImageViewShadow() {
         playingMovieDetailImage.applyShadow()
-//        playingMovieDetailImage.layer.shadowColor     = UIColor.black.cgColor
-//        playingMovieDetailImage.layer.shadowOffset    = CGSize(width: 0.0, height: 9.0)
-//        playingMovieDetailImage.layer.shadowRadius    = 5
-//        playingMovieDetailImage.layer.shadowOpacity   = 0.5
-    }
-    
-    // Make Trailer Button Round/Drop Shadow
-    func updateTrailerButton() {
-        playTrailerButton.setTitleColor(Colors.veryDarkGrey, for: .normal)
-        playTrailerButton.setTitleColor(Colors.white, for: .highlighted)
-        playTrailerButton.backgroundColor             = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        playTrailerButton.layer.cornerRadius          = playTrailerButton.frame.height / 2
-        
-        playTrailerButton.layer.shadowColor           = UIColor.black.cgColor
-        playTrailerButton.layer.shadowOffset          = CGSize(width: 0.0, height: 6.0)
-        playTrailerButton.layer.shadowOpacity         = 0.5
-        playTrailerButton.layer.shadowRadius          = 8
-    }
-    
-    // Make Ticket Button Round/Drop Shadow
-    func updateTicketButton() {
-        ticketButton.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        ticketButton.layer.cornerRadius = ticketButton.frame.height / 2
-        
-        ticketButton.layer.shadowOpacity = 0.5
-        ticketButton.layer.shadowRadius = 8
-        ticketButton.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        ticketButton.layer.shadowColor = UIColor.black.cgColor
+        playTrailerButton.updateButtonViews()
+        ticketButton.updateButtonViews()
     }
 }
 

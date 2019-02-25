@@ -16,7 +16,7 @@ class UpcomingMovieController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUpcomingMovies()
-        customBackButton()
+//        customBackButton()
     }
     
     // Fetch Upcoming Movies
@@ -30,9 +30,9 @@ class UpcomingMovieController: UITableViewController {
     }
 
     // Eliminate Text on Back Button on NavBar
-    func customBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
+//    func customBackButton() {
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//    }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -58,12 +58,13 @@ class UpcomingMovieController: UITableViewController {
         return cell
     }
 
-    // MARK: - Navigation
+     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toUpcomingDetailVC" {
-            guard let destinationVC = segue.destination as? UpcomingMovieDetailController,
-            let indexPath = tableView.indexPathForSelectedRow else { return }
+            guard let destinationVC = segue.destination as? MovieDetailController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
             destinationVC.movie = movieController.movies[indexPath.row]
+            destinationVC.hideTicketButton = true
         }
     }
 }

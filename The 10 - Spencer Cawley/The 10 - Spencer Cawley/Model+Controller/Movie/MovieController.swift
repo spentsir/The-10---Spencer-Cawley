@@ -13,6 +13,8 @@ var imageCache = [String: UIImage]()
 
 class MovieController {
     
+//var imageCache = [String: UIImage]()
+    
     // Properties
     var movies = [Movie]()
     
@@ -21,7 +23,7 @@ class MovieController {
     let upcomingBaseURL = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=725427eb27bb2372e7c69e11e5256f55&language=en-US&page=2")!
     
     // Fetch Current Movies Playing
-    func fetchPlayingMovie(completion: @escaping([Movie]?) -> Void) {
+    func fetchPlayingMovie(completion: @escaping ([Movie]?) -> Void) {
         let url = playingBaseURL
     
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -37,12 +39,12 @@ class MovieController {
                     completion(moviesArray)
                     
                 } catch {
-                    print("Error!: \(error.localizedDescription)")
+                    error.customAlert(with: "We're having trouble finding these movies. Please Try again later")
                     completion(nil)
                     return
                 }
                 if let error = error {
-                    print("Error!: \(error.localizedDescription)")
+                    error.customAlert(with: "We're having trouble finding these movies. Please try again later")
                     completion(nil)
                     return
                 }
@@ -68,12 +70,12 @@ class MovieController {
                     completion(moviesArray)
                     
                 } catch {
-                    print("Error!: \(error.localizedDescription)")
+                    error.customAlert(with: "We're having trouble finding these movies. Please try again later")
                     completion(nil)
                     return
                 }
                 if let error = error {
-                    print("Error!: \(error.localizedDescription)")
+                    error.customAlert(with: "We're having trouble finding these movies. Please try again later")
                     completion(nil)
                     return
                 }
@@ -104,7 +106,7 @@ class MovieController {
                 completion(image)
             }
             if let error = error {
-                print("Error!: \(error.localizedDescription)")
+                error.customAlert(with: "We're having trouble finding the movies posters. Please try again soon!")
                 completion(nil)
                 return
             }
